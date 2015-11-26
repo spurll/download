@@ -1,0 +1,77 @@
+<html>
+    <head>
+		<!-- Support for iOS device sizes. -->
+		<meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no'>
+
+		<title>{{config.TITLE}}</title>
+
+		<style type="text/css">
+			#content { width: 500px; margin: auto; padding-top: 10px; }
+
+			#title-bar {
+				width: 100%;
+				top: 0px;
+				background-color: #111111;
+				border-bottom: solid #444444;
+			}
+
+			#title {
+				width: 60%;
+				margin: auto;
+				font-variant: small-caps;
+				font-size: 200%;
+				text-align: center;
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+
+			a:link { text-decoration: none; color: #888888; }
+			a:visited { text-decoration: none; color: #888888; }
+			a:hover { text-decoration: none; color: #ffffff; }
+			a:active { text-decoration: none; color: #888888; }
+
+			body { color: #ffffff; background-color: #222222; overflow-y:auto; text-align: center; margin: 0px; }
+			input[type="text"] { width: 75%; }
+			input[type="submit"] { float: right; width: 20%; }
+			.messages { font-style: italic; }
+			.title { font-family: serif; font-variant: small-caps; font-size: 200%; }
+		</style>
+
+		<link rel="shortcut icon" href="{{url_for('static', filename='icon.png')}}"/>
+		<script type="text/javascript">
+			document.addEventListener("DOMContentLoaded", function(event) {
+				// http://stackoverflow.com/questions/1248081/get-the-browser-viewport-dimensions-with-javascript
+				var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+				if (width < document.getElementById('content').offsetWidth) {
+					// Resizes the content window to be smaller if viewed on a small screen.
+					document.getElementById('content').style.width = width;
+				}
+			}
+		</script>
+    </head>
+
+	<body>
+		<div id="title-bar"><div id="title">{{config.TITLE}}</div></div>
+
+		<div id="content">
+			{% with messages = get_flashed_messages() %}
+			<div class="messages">
+				{% if messages %}
+				{% for message in messages %}
+				<p>{{ message|safe }}</p>
+				{% endfor %}
+				{% endif %}
+			</div>
+			{% endwith %}
+
+			<form action="" method="POST">
+				{{form.hidden_tag()}}
+				<p>{{form.code.label}}</p>
+				{{form.code(autofocus=True)}}
+				<input type="submit" value="Download">
+			</form>
+
+			<p>Each download code can be used to download the file up to {{config.DOWNLOAD_LIMIT}} times, after which the code will expire. Please do not share your code. If you encounter any problems, please contact <a href="mailto:{{config.CONTACT_EMAIL}}">{{config.CONTACT_EMAIL}}</a>.</p>
+		</div>
+	</body>
+</html>
