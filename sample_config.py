@@ -12,6 +12,7 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///{}'.format(path.join(basedir, 'app.db'))
 
 # Download Code Options
 TITLE = 'Title for the Page'
+LOGO = 'optional_logo.png'
 DOWNLOAD_LIMIT = 5
 CONTACT_EMAIL = 'your@email.here'
 FILEPATH = path.join(basedir, 'download/static')

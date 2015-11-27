@@ -53,7 +53,15 @@
     </head>
 
 	<body>
-		<div id="title-bar"><div id="title">{{config.TITLE}}</div></div>
+		<div id="title-bar">
+			<div id="title">
+				{% if config.LOGO %}
+				<img src={{url_for('static', filename=config.LOGO)}} />
+				{% else %}
+				{{config.TITLE}}
+				{% endif %}
+			</div>
+		</div>
 
 		<div id="content">
 			{% with messages = get_flashed_messages() %}
