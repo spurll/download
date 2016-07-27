@@ -6,7 +6,7 @@
 		<title>{{config.TITLE}}</title>
 
 		<style type="text/css">
-			#content { width: 500px; margin: auto; padding-top: 10px; }
+			#content { width: 100%; max-width: 500px; margin: auto; padding-top: 10px; }
 
 			#title-bar {
 				width: 100%;
@@ -38,18 +38,6 @@
 		</style>
 
 		<link rel="shortcut icon" href="{{url_for('static', filename='icon.png')}}"/>
-		<script type="text/javascript">
-			document.addEventListener("DOMContentLoaded", function(event) {resize();});
-
-			function resize() {
-				// http://stackoverflow.com/questions/1248081/get-the-browser-viewport-dimensions-with-javascript
-				var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-				if (width < document.getElementById('content').offsetWidth) {
-					// Resizes the content window to be smaller if viewed on a small screen.
-					document.getElementById('content').style.width = width;
-				}
-			}
-		</script>
     </head>
 
 	<body>
