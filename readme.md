@@ -17,26 +17,37 @@ Requirements
 Configuration
 -------------
 
-You'll need to create a `config.py` file, which specifies details about the file to download and the number of times it can be accessed. A sample configuration file can be found at `sample_config.py`.
+You'll need to create a `config.py` file, which specifies details about the file to
+download and the number of times it can be accessed. A sample configuration file can be
+found at `sample_config.py`.
 
-For the sake of simplicity, it is recommended that you store the file to be downloaded in the `download/static/` directory.
+For the sake of simplicity, it is recommended that you store the file to be downloaded in
+the `download/static/` directory.
 
 Starting the Server
 -------------------
 
-Start the server with `run.py`. By default it will be accessible at `localhost:9999`. To make the server world-accessible or for other options, see `run.py -h`.
+Start the server with `run.py`. By default it will be accessible at `localhost:9999`. To
+make the server world-accessible or for other options, see `run.py -h`.
+
+If you're having trouble configuring your sever, I wrote a
+[blog post](http://blog.spurll.com/2015/02/configuring-flask-uwsgi-and-nginx.html)
+explaining how you can get Flask, uWSGI, and Nginx working together.
 
 Creating Download Codes
 -----------------------
 
-To create download codes, simply run Python, import the module, and run `models.create_code`, optionally passing the number of codes you'd like to create (the default is one):
+To create download codes, simply run Python, import the module, and run
+`models.create_code`, optionally passing the number of codes you'd like to create (the
+default is one):
 
 ```python
 import download
 download.models.create_code(3)
 ```
 
-The new download codes will be added to the database, displayed on the screen, and returned (in the form of UUID objects) in case you want to fiddle with them:
+The new download codes will be added to the database, displayed on the screen, and
+returned (in the form of UUID objects) in case you want to fiddle with them:
 
 ```
 The following new download codes are available for use:
@@ -45,7 +56,8 @@ ED536F30-7553-4DD8-A8EF-E5279260692B
 A91A237F-9A0F-459D-8F01-0798D887D68C
 ```
 
-The codes are case-insensitive, ignore hyphens, and (because they're hexadecimal) treat the letter `O` as a zero to avoid potential confusion for users.
+The codes are case-insensitive, ignore hyphens, and (because they're hexadecimal) treat
+the letter `O` as a zero to avoid potential confusion for users.
 
 Bugs and Feature Requests
 =========================
