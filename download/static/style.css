@@ -1,0 +1,30 @@
+div#title-bar {
+    position: unset;
+}
+
+div#title {
+    height: unset;
+}
+
+#content {
+    max-width: 500px;
+}
+
+img {
+    margin: 10px;
+    max-width: 100%;
+}
+
+input[type="text"] {
+    width: 75%;
+    padding: 5px;
+    margin: 5px;
+}
+
+input[type="submit"] {
+    float: right;
+    width: 20%;
+    padding: 5px;
+    margin: 5px;
+    font-size: 14px;
+}

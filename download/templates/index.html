@@ -3,51 +3,20 @@
 		<!-- Support for iOS device sizes. -->
 		<meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no'>
 
-		<title>{{config.TITLE}}</title>
+		<title>{{ config.TITLE }}</title>
 
-		<style type="text/css">
-			#content { width: 100%; max-width: 500px; margin: auto; padding-top: 10px; }
-
-			#title-bar {
-				width: 100%;
-				top: 0px;
-				background-color: #111111;
-				border-bottom: solid #444444;
-			}
-
-			#title {
-				width: 100%;
-				margin: auto;
-				font-variant: small-caps;
-				font-size: 200%;
-				text-align: center;
-				padding-top: 10px;
-				padding-bottom: 10px;
-			}
-
-			a:link { text-decoration: none; color: #888888; }
-			a:visited { text-decoration: none; color: #888888; }
-			a:hover { text-decoration: none; color: #ffffff; }
-			a:active { text-decoration: none; color: #888888; }
-
-			body { color: #ffffff; background-color: #222222; overflow-y:auto; text-align: center; margin: 0px; }
-			img { max-width: 100%; }
-			input[type="text"] { width: 75%; }
-			input[type="submit"] { float: right; width: 20%; }
-			.messages { font-style: italic; }
-			.title { font-family: serif; font-variant: small-caps; font-size: 200%; }
-		</style>
-
-		<link rel="shortcut icon" href="{{url_for('static', filename='icon.png')}}"/>
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='common.css') }} />
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='style.css') }} />
+		<link rel="shortcut icon" href={{ url_for('static', filename='icon.png') }} />
     </head>
 
 	<body>
 		<div id="title-bar">
 			<div id="title">
 				{% if config.LOGO %}
-				<img src={{url_for('static', filename=config.LOGO)}} />
+				<img src={{ url_for('static', filename=config.LOGO )}} />
 				{% else %}
-				{{config.TITLE}}
+				{{ config.TITLE }}
 				{% endif %}
 			</div>
 		</div>
@@ -57,20 +26,23 @@
 			<div class="messages">
 				{% if messages %}
 				{% for message in messages %}
-				<p>{{ message|safe }}</p>
+				<p>{{ message | safe }}</p>
 				{% endfor %}
 				{% endif %}
 			</div>
 			{% endwith %}
 
 			<form action="" method="POST">
-				{{form.hidden_tag()}}
-				<p>{{form.code.label}}</p>
-				{{form.code(autofocus=True)}}
+				{{ form.hidden_tag() }}
+				<p>{{ form.code.label }}</p>
+				{{ form.code(autofocus=True) }}
 				<input type="submit" value="Download">
 			</form>
 
-			<p>Each download code can be used to download the file up to {{config.DOWNLOAD_LIMIT}} times, after which the code will expire. Please do not share your code. If you encounter any problems, please contact <a href="mailto:{{config.CONTACT_EMAIL}}">{{config.CONTACT_EMAIL}}</a>.</p>
+			<p>
+                Each download code can be used to download the file up to {{ config.DOWNLOAD_LIMIT }} times, after which the code will expire.
+                Please do not share your code. If you encounter any problems, please contact <a href="mailto:{{config.CONTACT_EMAIL}}">{{config.CONTACT_EMAIL}}</a>.
+            </p>
 		</div>
 	</body>
 </html>
