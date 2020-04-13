@@ -1,13 +1,13 @@
 <html>
     <head>
 		<!-- Support for iOS device sizes. -->
-		<meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no'>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
 
 		<title>{{ config.TITLE }}</title>
 
-        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='common.css') }} />
-        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='style.css') }} />
-		<link rel="shortcut icon" href={{ url_for('static', filename='icon.png') }} />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='common.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
+		<link rel="shortcut icon" href="{{ url_for('static', filename='icon.png') }}" />
     </head>
 
 	<body>
@@ -41,7 +41,7 @@
 
 			<p>
                 Each download code can be used to download the file up to {{ config.DOWNLOAD_LIMIT }} times, after which the code will expire.
-                Please do not share your code. If you encounter any problems, please contact <a href="mailto:{{config.CONTACT_EMAIL}}">{{config.CONTACT_EMAIL}}</a>.
+                Please do not share your code. If you encounter any problems, please contact <a href="mailto:{{ config.CONTACT_EMAIL }}">{{ config.CONTACT_EMAIL }}</a>.
             </p>
 		</div>
 	</body>
