@@ -28,6 +28,18 @@ def index():
                 )
 
         else:
-            flash('Unable to validate: {}'.format(form.errors))
+            flash_errors(form)
 
     return render_template('index.html', form=form)
+
+
+def flash_errors(form):
+    for field, messages in form.errors.items():
+        label = getattr(getattr(getattr(form, field), 'label'), 'text', '')
+        label = label.replace(':', '')
+        error = ', '.join(messages)
+
+        message = f'Error in {label}: {error}' if label else 'Error: {error}'
+
+        flash(message)
+        print(message)
