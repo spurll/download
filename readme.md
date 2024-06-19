@@ -9,10 +9,8 @@ Usage
 Requirements
 ------------
 
-* flask
 * flask-wtf
 * flask-sqlalchemy
-* sqlalchemy
 
 Configuration
 -------------
